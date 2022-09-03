@@ -89,6 +89,7 @@ export default class Canvas2D {
   public setTexture(textureSource: HTMLImageElement) {
     const textureID = this.gl.createTexture();
     this.gl.bindTexture(this.gl.TEXTURE_2D, textureID);
+    this.gl.activeTexture(this.gl.TEXTURE0);
     this.gl.texParameterf(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
     this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, textureSource.width, textureSource.height, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, textureSource);
   }
