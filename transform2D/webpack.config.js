@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require("fs");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 let mode = "development";
 
@@ -36,7 +37,14 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({
-    templateContent: fs.readFileSync(path.resolve(__dirname, "index.html")).toString()
-  })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      templateContent: fs.readFileSync(path.resolve(__dirname, "index.html")).toString()
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "public", to: "" },
+      ],
+    }),
+  ],
 };

@@ -1,4 +1,4 @@
-import * as ogl from "ogl-typescript"
+import {Mat4, Vec3} from "ogl-typescript"
 
 import Canvas2D from "./canvas2D";
 import { convertCoordinate, loadImage } from "./utils";
@@ -92,13 +92,13 @@ async function launch() {
     scale *= 1.1;
 
     rad += 0.2;
-    const originMat = new ogl.Mat4().identity();
+    const originMat = new Mat4().identity();
 
-    let translateMat = new ogl.Mat4().identity();
+    let translateMat = new Mat4().identity();
     translateMat.x = 0.5;
     translateMat.y = -0.5;
 
-    const rotateMat = new ogl.Mat4().identity();
+    const rotateMat = new Mat4().identity();
     rotateMat[0] = Math.cos(rad);
     rotateMat[1] = -Math.sin(rad);
     rotateMat[4] = Math.sin(rad);
@@ -110,8 +110,8 @@ async function launch() {
 
     // originMat.multiply(translateMat.inverse(), originMat);
 
-    const scaleMat = new ogl.Mat4().identity();
-    scaleMat.scale(new ogl.Vec3(scale, scale, 0));
+    const scaleMat = new Mat4().identity();
+    scaleMat.scale(new Vec3(scale, scale, 0));
 
     // originMat.multiply(translateMat, originMat);
 
